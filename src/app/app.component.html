@@ -4,4 +4,41 @@
 	<ol>
 		<li *ngFor="let tarea of tareas">{{tarea.titulo}} ({{tarea.minutos}} minutos)</li>
 	</ol>
+	<br>
+		<h2>Ingreso de Tareas</h2>
+
+			<label>
+				Tarea
+				<input id="titulo" type="text" >
+			</label>
+			<br>
+			<label >
+				Duracion
+				<input id="minutos" type="text" >
+			</label>
+			<br>
+		<button (click)="agregarTareas()">Agregar</button>
+
+		<br>
+		<h2>Ordenar por Tiempo</h2>
+		<button (click)="ordenarTareas()">Orden por Tiempo</button>
+		<br>
+		<br>
+		<h2>Tabla de Tareas</h2>
+		<table id="tabla">
+			<tr>
+				<td>ID</td>
+				<td>Titulo</td>
+				<td>Duracion</td>
+				<td>Eliminar</td>
+				<td>Destacadas</td>
+			</tr>
+			<tr *ngFor="let tarea of tareas; index as i">	
+				<td>{{i}}</td>
+				<td >{{tarea.titulo}}</td>
+				<td>({{tarea.minutos}} minutos)</td>
+				<td><button (click)="eliminarTareas(i)">Eliminar</button></td>
+				<td><input type="checkbox" (change)="destacarTareas(i)"></td>
+			</tr>
+		</table>
 </div>

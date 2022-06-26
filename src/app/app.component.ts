@@ -9,6 +9,7 @@ import { Tarea } from './tarea';
 })
 export class AppComponent {
 	tareas: Tarea[];
+	numero=0;
 
 	constructor(
         public service: AppService,
@@ -20,5 +21,21 @@ export class AppComponent {
 
 	async obtenerTareas() {
 		this.tareas = await this.service.obtenerTareas();
+	}
+
+	async agregarTareas(tareas: Tarea[]){
+		this.tareas = await this.service.agregarTareas(this.tareas);
+	}
+
+	async eliminarTareas(numero:number,tareas:Tarea[]){
+		this.tareas = await this.service.eliminarTareas(numero,this.tareas)
+	}
+
+	async ordenarTareas(tareas: Tarea[]){
+		this.tareas = await this.service.ordenarTareas(this.tareas);
+	}
+
+	async destacarTareas(numero:number,tareas:Tarea[]){
+		this.tareas = await this.service.destacarTareas(numero,this.tareas)
 	}
 }
